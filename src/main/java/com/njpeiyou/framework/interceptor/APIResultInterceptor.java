@@ -4,6 +4,7 @@ import com.jfinal.aop.Interceptor;
 import com.jfinal.aop.Invocation;
 import com.njpeiyou.framework.controller.BaseController;
 import com.njpeiyou.framework.exception.BusinessException;
+import com.njpeiyou.framework.exception.RedirectException;
 import com.njpeiyou.framework.util.BaseConst;
 
 import java.util.HashMap;
@@ -19,6 +20,9 @@ public class APIResultInterceptor implements Interceptor {
         try {
             inv.invoke();
             renderSuccess(controller, controller.getResult());
+            return;
+        } catch (RedirectException e) {
+            controller.renderNull();
             return;
         } catch (BusinessException e) {
             renderFail(controller, e.getMessage());
