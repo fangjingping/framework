@@ -20,17 +20,13 @@ public class APIResultInterceptor implements Interceptor {
         try {
             inv.invoke();
             renderSuccess(controller, controller.getResult());
-            return;
         } catch (RedirectException e) {
-            controller.renderNull();
             return;
         } catch (BusinessException e) {
             renderFail(controller, e.getMessage());
-            return;
         } catch (Exception e) {
             e.printStackTrace();
             renderFail(controller, e.getMessage());
-            return;
         }
     }
 
