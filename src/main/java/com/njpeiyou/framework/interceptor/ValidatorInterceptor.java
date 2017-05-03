@@ -4,6 +4,7 @@ import com.jfinal.aop.Interceptor;
 import com.jfinal.aop.Invocation;
 import com.njpeiyou.framework.controller.BaseController;
 import com.njpeiyou.framework.util.BaseConst;
+import com.njpeiyou.framework.util.RenderUtil;
 import com.njpeiyou.framework.util.Validator;
 
 import java.lang.annotation.Annotation;
@@ -42,14 +43,13 @@ public class ValidatorInterceptor implements Interceptor {
 
                     if (!validateResult) {
                         APIResultInterceptor apiResultInterceptor = new APIResultInterceptor();
-                        apiResultInterceptor.renderFail(controller,errmsg);
+                        RenderUtil.renderFail(controller,errmsg);
                         return;
                     }
                 }
             } catch (Exception e) {
                 e.printStackTrace();
-                APIResultInterceptor apiResultInterceptor = new APIResultInterceptor();
-                apiResultInterceptor.renderFail(controller, BaseConst.MSG_FAIL);
+                RenderUtil.renderFail(controller, BaseConst.MSG_FAIL);
                 return;
             }
         }

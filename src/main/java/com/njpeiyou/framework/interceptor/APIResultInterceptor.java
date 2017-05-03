@@ -6,6 +6,7 @@ import com.njpeiyou.framework.controller.BaseController;
 import com.njpeiyou.framework.exception.BusinessException;
 import com.njpeiyou.framework.exception.RedirectException;
 import com.njpeiyou.framework.util.BaseConst;
+import com.njpeiyou.framework.util.RenderUtil;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -19,29 +20,17 @@ public class APIResultInterceptor implements Interceptor {
         BaseController controller = (BaseController) inv.getController();
         try {
             inv.invoke();
-            renderSuccess(controller, controller.getResult());
+            RenderUtil.renderSuccess(controller, controller.getResult());
         } catch (RedirectException e) {
             return;
         } catch (BusinessException e) {
-            renderFail(controller, e.getMessage());
+            RenderUtil.renderFail(controller, e.getMessage());
         } catch (Exception e) {
             e.printStackTrace();
-            renderFail(controller, e.getMessage());
+            RenderUtil.renderFail(controller, e.getMessage());
         }
     }
 
 
-    private void renderSuccess(BaseController c, Object data) {
-        Map<String, Object> result = new HashMap<String, Object>();
-        result.put("code", BaseConst.CODE_SUCCESS);
-        result.put("data", data);
-        c.renderJson(result);
-    }
 
-    public void renderFail(BaseController c, String msg) {
-        Map<String, Object> result = new HashMap<String, Object>();
-        result.put("code", BaseConst.CODE_FAIL);
-        result.put("msg", msg);
-        c.renderJson(result);
-    }
 }
