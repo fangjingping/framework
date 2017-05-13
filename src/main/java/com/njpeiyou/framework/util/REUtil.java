@@ -12,7 +12,7 @@ public class REUtil {
 
     public static Boolean isUrl(String url){
         if(StringUtils.isEmpty(url)){return false;}
-        String regEx="^((http|https):\\/\\/)?[\\w-_.]+(\\/[\\w-_]+)*\\/?$";
+        String regEx="^((https|http|ftp|rtsp|mms)?:\\/\\/)[^\\s]+";
         Pattern pattern = Pattern.compile(regEx);
         Matcher matcher = pattern.matcher(url);
         boolean match = matcher.matches();
