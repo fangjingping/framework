@@ -21,7 +21,7 @@ public class REUtil {
 
     public static Boolean isEmail(String email){
         if(StringUtils.isEmpty(email)){return false;}
-        String regEx="^[A-Za-zd]+([-_.][A-Za-zd]+)*@([A-Za-zd]+[-.])+[A-Za-zd]{2,5}$";
+        String regEx="[\\w!#$%&'*+/=?^_`{|}~-]+(?:\\.[\\w!#$%&'*+/=?^_`{|}~-]+)*@(?:[\\w](?:[\\w-]*[\\w])?\\.)+[\\w](?:[\\w-]*[\\w])?";
         Pattern pattern = Pattern.compile(regEx);
         Matcher matcher = pattern.matcher(email);
         return matcher.matches();

@@ -40,9 +40,7 @@ public class ValidatorInterceptor implements Interceptor {
                         errmsg = validator.getErrorMsg(paramNames);
                     }
 
-
                     if (!validateResult) {
-                        APIResultInterceptor apiResultInterceptor = new APIResultInterceptor();
                         RenderUtil.renderFail(controller,errmsg);
                         return;
                     }
