@@ -32,6 +32,13 @@
       <version>3.5</version>
     </dependency>
 
+    <!-- Nutz jar -->
+    <dependency>
+      <groupId>org.nutz</groupId>
+      <artifactId>nutz</artifactId>
+      <version>1.r.60</version>
+    </dependency>
+
   </dependencies>
   <build>
     <finalName>framework</finalName>

@@ -26,5 +26,6 @@
     <orderEntry type="library" name="Maven: cglib:cglib-nodep:3.1" level="project" />
     <orderEntry type="library" name="Maven: javax.servlet:javax.servlet-api:3.1.0" level="project" />
     <orderEntry type="library" name="Maven: org.apache.commons:commons-lang3:3.5" level="project" />
+    <orderEntry type="library" name="Maven: org.nutz:nutz:1.r.60" level="project" />
   </component>
 </module>
