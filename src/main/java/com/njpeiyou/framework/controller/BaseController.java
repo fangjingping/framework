@@ -25,6 +25,8 @@ public class BaseController extends Controller{
         return data == null ? resultMap : data;
     }
 
-
-
+    @Override
+    public void renderJson(Object object) {
+        super.renderJson(object);
+    }
 }

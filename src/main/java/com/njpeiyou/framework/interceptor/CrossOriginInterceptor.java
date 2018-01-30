@@ -10,6 +10,7 @@ import com.jfinal.aop.Invocation;
 public class CrossOriginInterceptor implements Interceptor{
     public void intercept(Invocation inv) {
         inv.getController().getResponse().setHeader("Access-Control-Allow-Origin","*");
+        inv.getController().getResponse().setHeader("Access-Control-Allow-Methods", "GET,PUT,DELETE,OPTIONS");
         inv.invoke();
     }
 }
